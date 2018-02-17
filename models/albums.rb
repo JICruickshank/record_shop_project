@@ -2,6 +2,9 @@ require_relative("../db/sql_runner.rb")
 
 class Album
 
+  attr_reader :id
+  attr_accessor :artist_id, :title, :genre, :quantity, :stock_level
+
   def initialize(options)
 
     @id = options['id'].to_i
@@ -44,5 +47,10 @@ class Album
     @id = result[0]['id']
   end
 
+  def update
+    sql = "UPDATE albums SET (title, genre, quantity, stock_level, artist_id) = ($1, $2, $3, $4, $5) WHERE id = $6"
+    values = [@title, @genre, @quantity, @stock_level, @artist_id, @id]
+    SqlRunner.run(sql, values)
+  end
 
 end
