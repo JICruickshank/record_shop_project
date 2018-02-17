@@ -18,11 +18,23 @@ class Album
     SqlRunner.run(sql)
   end
 
+  def self.all
+    sql = "SELECT * FROM albums"
+    result = SqlRunner.run(sql)
+    artists = result.map { |album| Album.new(album) }
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    album = Album.new(result[0])
+  end
+
   def delete
     sql = "DELETE FROM albums WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
-
   end
 
   def save
@@ -30,7 +42,6 @@ class Album
     values = [@title, @genre, @quantity, @stock_level, @artist_id]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id']
-
   end
 
 
