@@ -1,5 +1,3 @@
-require( "sinatra")
-require( "sinatra/contrib/all")
 require_relative("../models/albums.rb" )
 require_relative("../models/artists.rb")
 
