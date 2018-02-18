@@ -1,0 +1,7 @@
+<h2>Inventory For <%= @artist.name %> </h2>
+<% @albums.each do |album| %>
+<p>Title: <%= album.title %></p>
+<p>Genre: <%= album.genre %></p>
+<p>Quantity: <%= album.quantity %></p>
+<p>Stock Level: <%= album.stock_level %></p>
+<% end %>

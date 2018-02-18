@@ -3,7 +3,7 @@ require_relative("../db/sql_runner.rb")
 class Album
 
   attr_reader :id
-  attr_accessor :artist_id, :title, :genre, :quantity, :stock_level
+  attr_accessor :artist_id, :title, :genre, :quantity
 
   def initialize(options)
 
@@ -12,7 +12,6 @@ class Album
     @title = options['title']
     @genre = options['genre']
     @quantity = options['quantity'].to_i
-    @stock_level = options['stock_level']
 
   end
 
@@ -41,15 +40,15 @@ class Album
   end
 
   def save
-    sql = "INSERT INTO albums (title, genre, quantity, stock_level, artist_id) VALUES ($1, $2, $3, $4, $5) RETURNING id"
-    values = [@title, @genre, @quantity, @stock_level, @artist_id]
+    sql = "INSERT INTO albums (title, genre, quantity, artist_id) VALUES ($1, $2, $3, $4) RETURNING id"
+    values = [@title, @genre, @quantity, @artist_id]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id']
   end
 
   def update
-    sql = "UPDATE albums SET (title, genre, quantity, stock_level, artist_id) = ($1, $2, $3, $4, $5) WHERE id = $6"
-    values = [@title, @genre, @quantity, @stock_level, @artist_id, @id]
+    sql = "UPDATE albums SET (title, genre, quantity, artist_id) = ($1, $2, $3, $4) WHERE id = $5"
+    values = [@title, @genre, @quantity, @artist_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -60,6 +59,16 @@ class Album
     artist = Artist.new(result[0])
     return artist
 
+  end
+
+  def stock_level
+    if @quantity <= 2
+      return "Low"
+    elsif @quantity <= 5
+      return "Medium"
+    elsif @quantity > 5
+      return "High"
+    end
   end
 
 end

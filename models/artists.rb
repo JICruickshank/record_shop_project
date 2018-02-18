@@ -30,6 +30,17 @@ class Artist
     artist = Artist.new(result[0])
   end
 
+  def self.artist_already_exists(name)
+    artists = self.all
+    artists.each do |artist|
+      if artist.name == name
+        return artist.id
+      else
+        return false
+      end
+    end
+  end
+
   def delete
     sql = "DELETE FROM artists WHERE id = $1"
     values = [@id]
@@ -55,6 +66,8 @@ class Artist
     result = SqlRunner.run(sql, values)
     albums = result.map { |album| Album.new(album) }
   end
+
+
 
 
 end
