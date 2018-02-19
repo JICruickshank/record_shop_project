@@ -1,7 +1,7 @@
 <h1>Inventory</h1>
 <% @albums.each do |album| %>
   <p>Album ID No : <%= album.id %></p>
-  <p>Artist : <%= album.artist.name %></p>
+  <p>Artist : <a href="artists/<%= album.artist_id %>"><%= album.artist.name %></a></p>
   <p>Album : <%= album.title %></p>
   <p>Genre : <%= album.genre %></p>
   <p>Quantity : <%= album.quantity %></p>
