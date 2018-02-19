@@ -20,5 +20,13 @@ get "/artists/:id" do
 end
 
 get "/artists/:id/edit_artist_name" do
+  @artist = Artist.find_by_id(params[:id])
   erb(:"artists/edit")
+end
+
+post "/artists/:id/update" do
+  @artist = Artist.find_by_id(params[:id])
+  @artist.name = params[:name]
+  @artist.update
+  erb(:"artists/update")
 end

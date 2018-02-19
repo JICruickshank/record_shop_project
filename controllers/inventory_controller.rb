@@ -9,6 +9,12 @@ end
 get "/inventory/:id" do
   album_id = params[:id].to_i
   @album = Album.find_by_id(album_id)
+  erb(:"inventory/show")
+end
+
+get "/inventory/:id/edit" do
+  album_id = params[:id].to_i
+  @album = Album.find_by_id(album_id)
   erb(:"inventory/edit")
 end
 
