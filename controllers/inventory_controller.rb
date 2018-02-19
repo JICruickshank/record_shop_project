@@ -6,6 +6,13 @@ get "/inventory" do
   erb(:"inventory/index")
 end
 
+post "/inventory/:id/delete" do
+  album_id = params[:id].to_i
+  @album = Album.find_by_id(album_id)
+  @album.delete
+  erb(:"inventory/delete")
+end
+
 get "/inventory/:id" do
   album_id = params[:id].to_i
   @album = Album.find_by_id(album_id)

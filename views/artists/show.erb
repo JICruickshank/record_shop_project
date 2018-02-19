@@ -7,3 +7,7 @@
 <% end %>
 <a href="<%= @artist.id %>/add_album">Add Album to this artist?</a>
 <a href="<%= @artist.id %>/edit_artist_name">Edit Artist name?</a>
+<form action="<%= @artist.id %>/delete" method="post">
+  <input type="submit" value="Delete Artist?">
+</form>
+<p>** DELETING ARTIST WILL ALSO DELETE ALBUMS BY THAT ARTIST **</p>

@@ -19,9 +19,10 @@ get "/add_album" do
 end
 
 post "/add_album" do
-  if Artist.artist_already_exists(params[:artist_name]) == false
+  name = params[:artist_name]
+  if Artist.find_id_by_name(name) == false
     new_artist = Hash.new
-    new_artist['name'] = params[:artist_name]
+    new_artist['name'] = name
     @artist = Artist.new(new_artist)
     @artist.save
     params[:artist_id] = @artist.id
@@ -29,10 +30,15 @@ post "/add_album" do
     @album.save
     erb(:"albums/create")
   else
-    params[:artist_id] = Artist.artist_already_exists(params[:artist_name])
+    params[:artist_id] = Artist.find_id_by_name(name)
     @album = Album.new(params)
     @album.save
     erb(:"albums/create")
   end
+end
 
+post "/artists/:id/delete" do
+  @artist = Artist.find_by_id(params[:id])
+  @artist.delete
+  redirect to "/artists"
 end

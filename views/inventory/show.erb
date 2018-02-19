@@ -6,3 +6,7 @@
 <p>Stock Level <%= @album.stock_level %></p>
 
 <p><a href="<%= @album.id %>/edit">Edit This Album?</a></p>
+<form action="<%= @album.id %>/delete" method="post">
+  <input type="submit" value="Delete this album?">
+
+</form>
