@@ -18,3 +18,7 @@ get "/artists/:id" do
   @albums = @artist.albums
   erb(:"artists/show")
 end
+
+get "/artists/:id/edit_artist_name" do
+  erb(:"artists/edit")
+end

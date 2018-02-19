@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner.rb")
+require_relative("../models/stock.rb")
 
 class Album
 
@@ -33,6 +34,18 @@ class Album
     album = Album.new(result[0])
   end
 
+  def self.find_id_by_title(title)
+    sql = "SELECT * FROM albums WHERE title = $1"
+    values = [title]
+    result = SqlRunner.run(sql, values)
+    if result.first != nil
+      album = Album.new(result.first)
+      return album.id
+    else
+      return false
+    end
+  end
+
   def delete
     sql = "DELETE FROM albums WHERE id = $1"
     values = [@id]
@@ -61,14 +74,28 @@ class Album
 
   end
 
+  # def stock_level
+  #   sql = "SELECT * FROM stock WHERE id = $1"
+  #   values = [1]
+  #   result = SqlRunner.run(sql)
+  #   settings = Stock.new(result[0])
+  #   if @quantity <= settings.low
+  #     return "Low"
+  #   elsif @quantity <= settings.medium
+  #     return "Medium"
+  #   elsif @quantity >= settings.high
+  #     return "High"
+  #   end
+  # end
+
   def stock_level
-    if @quantity <= 2
-      return "Low"
-    elsif @quantity <= 5
-      return "Medium"
-    elsif @quantity > 5
-      return "High"
-    end
+      if @quantity <= 1
+        return "Low"
+      elsif @quantity <= 2
+        return "Medium"
+      elsif @quantity >= 3
+        return "High"
+      end
   end
 
 end

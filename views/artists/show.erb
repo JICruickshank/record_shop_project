@@ -1,8 +1,9 @@
 <h2>Inventory For <%= @artist.name %> </h2>
 <% @albums.each do |album| %>
-<p>Title: <%= album.title %></p>
+<p>Title: <a href="/inventory/<%= album.id %>"><%= album.title %></a></p>
 <p>Genre: <%= album.genre %></p>
 <p>Quantity: <%= album.quantity %></p>
 <p>Stock Level: <%= album.stock_level %></p>
 <% end %>
 <a href="<%= @artist.id %>/add_album">Add Album to this artist?</a>
+<a href="<%= @artist.id %>/edit_artist_name">Edit Artist name?</a>

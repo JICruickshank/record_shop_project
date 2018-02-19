@@ -30,6 +30,20 @@ class Artist
     artist = Artist.new(result[0])
   end
 
+  def self.find_id_by_name(artist_name)
+    sql = "SELECT * FROM artists WHERE name = $1"
+    values = [artist_name]
+    result = SqlRunner.run(sql, values)
+    if result.first != nil
+      artist = Artist.new(result.first)
+      artist_id = artist.id
+      return artist_id
+    else
+      return false
+    end
+
+  end
+
   def self.artist_already_exists(name)
     artists = self.all
     artists.each do |artist|
@@ -66,7 +80,6 @@ class Artist
     result = SqlRunner.run(sql, values)
     albums = result.map { |album| Album.new(album) }
   end
-
 
 
 

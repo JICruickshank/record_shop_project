@@ -1,3 +1,6 @@
+require_relative("../models/albums.rb" )
+require_relative("../models/artists.rb")
+
 get "/artists/:id/add_album" do
   @artist = Artist.find_by_id(params[:id])
   erb(:"albums/new")
