@@ -3,8 +3,13 @@ get "/add_artist" do
 end
 
 post "/artists/new" do
-  @artist = Artist.new(params)
-  @artist.save
+  if Artist.find_id_by_name(params[:name]) == false
+    @artist = Artist.new(params)
+    @artist.save
+    @new_artist = true
+  else
+    @new_artist = false
+  end
   erb(:"artists/create")
 end
 

@@ -20,8 +20,7 @@ CREATE TABLE albums (
   title VARCHAR(255),
   genre VARCHAR(255),
   quantity INT,
+  buy_price INT,
+  sale_price INT,
   stock_level VARCHAR(255)
---   buy_price INT,
---   sale_price INT,
---   mark_up INT
--- );
+);

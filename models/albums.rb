@@ -4,7 +4,7 @@ require_relative("../models/stock.rb")
 class Album
 
   attr_reader :id
-  attr_accessor :artist_id, :title, :genre, :quantity
+  attr_accessor :artist_id, :title, :genre, :quantity, :buy_price, :sale_price
 
   def initialize(options)
 
@@ -13,6 +13,8 @@ class Album
     @title = options['title']
     @genre = options['genre']
     @quantity = options['quantity'].to_i
+    @buy_price = options['buy_price'].to_i
+    @sale_price = options['sale_price'].to_i
 
   end
 
@@ -53,15 +55,15 @@ class Album
   end
 
   def save
-    sql = "INSERT INTO albums (title, genre, quantity, artist_id) VALUES ($1, $2, $3, $4) RETURNING id"
-    values = [@title, @genre, @quantity, @artist_id]
+    sql = "INSERT INTO albums (title, genre, quantity, artist_id, buy_price, sale_price) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id"
+    values = [@title, @genre, @quantity, @artist_id, @buy_price, @sale_price]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id']
   end
 
   def update
-    sql = "UPDATE albums SET (title, genre, quantity, artist_id) = ($1, $2, $3, $4) WHERE id = $5"
-    values = [@title, @genre, @quantity, @artist_id, @id]
+    sql = "UPDATE albums SET (title, genre, quantity, artist_id) = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
+    values = [@title, @genre, @quantity, @artist_id, @id, @buy_price, @sale_price]
     SqlRunner.run(sql, values)
   end
 
@@ -96,6 +98,10 @@ class Album
       elsif @quantity >= 3
         return "High"
       end
+  end
+
+  def mark_up
+    return @sale_price - @buy_price
   end
 
 end

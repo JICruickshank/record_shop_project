@@ -2,8 +2,12 @@
 <p>Title: <%= @album.title %></p>
 <p>Artist: <%= @album.artist.name %></p>
 <p>Genre: <%= @album.genre %></p>
-<p>Quantity <%= @album.quantity %></p>
+<p>Quantity: <%= @album.quantity %></p>
+<p>Purchase Price: <%= @album.buy_price %></p>
+<p>Sale Price: <%= @album.sale_price %></p>
+<p>Expected Profit: <%= @album.mark_up %></p>
 <p>Stock Level <%= @album.stock_level %></p>
+
 
 <p><a href="<%= @album.id %>/edit">Edit This Album?</a></p>
 <form action="<%= @album.id %>/delete" method="post">
