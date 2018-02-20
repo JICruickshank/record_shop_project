@@ -94,11 +94,11 @@ class Album
 
   def sell(sale)
     if sale.sale_quantity > @quantity
-      return false
+      return "There is insufficient stock for this sale"
     else
       @quantity -= sale.sale_quantity
       update
-      return stock_level
+      return "Remaining stock : #{@quantity}"
     end
   end
 

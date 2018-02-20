@@ -13,7 +13,7 @@
 
 </div>
 
-
+<button type="button" name="button"><a href="/inventory/<%= @album.id %>/sell">Sell Record?</a></button>
 <p><a href="<%= @album.id %>/edit">Edit This Album?</a></p>
 <form action="<%= @album.id %>/delete" method="post">
   <input type="submit" value="Delete this album?">

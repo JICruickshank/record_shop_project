@@ -19,7 +19,7 @@ class TestSale < MiniTest::Test
     album1 = Album.new({'quantity' => 3})
     sale1 = Sale.new({'sale_quantity' => 2})
     result = album1.sell(sale1)
-    assert_equal("Low", result)
+    assert_equal("Remaining stock : 1", result)
   end
 
   def test_no_stock
@@ -27,7 +27,16 @@ class TestSale < MiniTest::Test
     album1 = Album.new({'quantity' => 3})
     sale1 = Sale.new({'sale_quantity' => 3})
     result = album1.sell(sale1)
-    assert_equal("No Stock", result)
+    assert_equal("Remaining stock : 0", result)
+  end
+
+  def test_insufficient_stock
+
+    album1 = Album.new({'quantity' => 3})
+    sale1 = Sale.new({'sale_quantity' => 4})
+    result = album1.sell(sale1)
+    assert_equal("There is insufficient stock for this sale", result)
+
   end
 
 end

@@ -1,5 +1,6 @@
 require_relative("../models/albums.rb" )
 require_relative("../models/artists.rb")
+require_relative("../models/sales.rb")
 
 get "/inventory" do
   @albums = Album.all
@@ -39,4 +40,17 @@ post "/inventory/:id" do
     @album.update
   end
 erb(:"inventory/update")
+end
+
+get "/inventory/:id/sell" do
+  @album = Album.find_by_id(params[:id])
+  erb(:"inventory/sell")
+end
+
+post "/inventory/:id/confirmation_of_sale"  do
+  album = Album.find_by_id(params[:id])
+  params[:artist_id] = params[:id]
+  sale = Sale.new(params)
+  @result = album.sell(sale)
+  erb(:"inventory/confirmation")
 end

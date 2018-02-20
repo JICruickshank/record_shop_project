@@ -1,0 +1,11 @@
+<h3>Sell Album</h3>
+<p>Album: <%= @album.title %></p>
+<p>Artist: <%= @album.artist.name %></p>
+<form action="/inventory/<%= @album.id %>/confirmation_of_sale" method="post">
+  <label for="sale_quantity">Quantity: </label>
+  <input type="number" name="sale_quantity" id="sale_quantity">
+  <label for="sale_date">Date: </label>
+  <input type="date" name="sale_date" id="sale_quantity">
+  <input type="submit" value="Confirm sale?">
+
+</form>
