@@ -76,17 +76,30 @@ class Album
   end
 
   def stock_level
-      if @quantity <= 2
-        return "Low"
-      elsif @quantity <= 5
-        return "Medium"
-      elsif @quantity >= 10
-        return "High"
+    if @quantity == 0
+      return "No Stock"
+    elsif @quantity <= 2
+      return "Low"
+    elsif @quantity <= 5
+      return "Medium"
+    elsif @quantity >= 10
+      return "High"
+
       end
   end
 
   def mark_up
     return @sale_price - @buy_price
+  end
+
+  def sell(sale)
+    if sale.sale_quantity > @quantity
+      return false
+    else
+      @quantity -= sale.sale_quantity
+      update
+      return stock_level
+    end
   end
 
 end
