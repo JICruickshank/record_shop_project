@@ -35,3 +35,9 @@ post "/artists/:id/update" do
   @artist.update
   erb(:"artists/update")
 end
+
+get "/artists/:id/sales" do
+  @artist = Artist.find_by_id(params[:id])
+  @sales = @artist.sales
+  erb(:"artists/sales")
+end

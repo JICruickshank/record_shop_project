@@ -98,8 +98,17 @@ class Album
     else
       @quantity -= sale.sale_quantity
       update
+      sale.save
       return "Remaining stock : #{@quantity}"
     end
+  end
+
+  def sales
+    sql = "SELECT * FROM sales WHERE album_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    sales = result.map { |sale| Sale.new(sale) }
+
   end
 
 end

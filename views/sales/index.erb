@@ -1,0 +1,18 @@
+<h2>PAST SALES</h2>
+<table>
+  <tr>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Quantity</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <%  @sales.each do |sale| %>
+    <td><a href="/artists/<%= sale.artist.id %>/sales"><%= sale.artist.name %></a></td>
+    <td><%= sale.album.title %></td>
+    <td><%= sale.sale_quantity %></td>
+    <td><%= sale.sale_date %></td>
+  </tr>
+  <% end %>
+
+</table>

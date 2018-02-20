@@ -49,8 +49,14 @@ end
 
 post "/inventory/:id/confirmation_of_sale"  do
   album = Album.find_by_id(params[:id])
-  params[:artist_id] = params[:id]
+  params[:album_id] = params[:id]
   sale = Sale.new(params)
   @result = album.sell(sale)
   erb(:"inventory/confirmation")
+end
+
+get "/sales" do
+  @sales = Sale.all
+  erb(:"sales/index")
+
 end

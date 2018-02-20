@@ -70,6 +70,17 @@ class Artist
     albums = result.map { |album| Album.new(album) }
   end
 
+  def sales
+    artist_sales = []
+    albums.each do |album|
+      album_sales = album.sales
+      album_sales.each do |sale|
+        artist_sales.push(sale)
+      end
+    end
+    return artist_sales
+  end
+
 
 
 end

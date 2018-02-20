@@ -2,7 +2,7 @@
   display: inline;
   background: beige;
   border: black 3px solid;
-  padding: 0px 70px;
+  padding: 0px 52px;
   opacity: 0.9;
 }
 body {
@@ -20,19 +20,19 @@ body {
 .album_details {
   display: inline;
 }
-.inventory {
+table {
   background-color : white;
   border : solid black 10px;
   opacity: 0.9;
 
 }
-.inventory_table th {
+th {
   background-color: grey;
 }
-.inventory_table tr {
+tr {
   justify-content: center;
 }
-.inventory_table td {
+td {
   width: 200px;
   text-align: center;
   border: solid black 1px;
