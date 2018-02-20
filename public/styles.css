@@ -1,0 +1,10 @@
+li {
+  display: inline;
+  padding: 70px;
+  /* align-content: space-between; */
+}
+.top_nav_links {
+  background-color: beige;
+  /* align-content: stretch; */
+
+}
