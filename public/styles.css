@@ -1,9 +1,42 @@
 .nav_link {
-  display: flex;
-  /* padding: 60px; */
+  display: inline;
+  background: beige;
+  border: black 3px solid;
+  padding: 0px 70px;
+  opacity: 0.9;
 }
-.top_links {
-  display: flex;
-  flex-direction: row;
+body {
+  background-image: url("smiley.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
 
+}
+.bg {
+}
+.homepage_header {
+  display: flex;
+  justify-content: space-around;
+}
+.album_details {
+  display: inline;
+}
+.inventory {
+  background-color : white;
+  border : solid black 10px;
+  opacity: 0.9;
+
+}
+.inventory_table th {
+  background-color: grey;
+}
+.inventory_table tr {
+  justify-content: center;
+}
+.inventory_table td {
+  width: 200px;
+  text-align: center;
+  border: solid black 1px;
+}
+.artist_list {
+  font-size: 22px;
 }

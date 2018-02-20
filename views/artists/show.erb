@@ -1,5 +1,5 @@
 <h2>Inventory For <%= @artist.name %> </h2>
-<% @albums.each do |album| %>
+ <% @albums.each do |album| %>
 <p>Title: <a href="/inventory/<%= album.id %>"><%= album.title %></a></p>
 <p>Genre: <%= album.genre %></p>
 <p>Quantity: <%= album.quantity %></p>

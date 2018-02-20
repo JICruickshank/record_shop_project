@@ -1,3 +1,5 @@
+<ul>
 <% @artists.each do |artist| %>
-<p>Artist : <a href="/artists/<%= artist.id %>"><%= artist.name %></a></p>
+<li class="artist_list"><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>
 <% end %>
+</ul>

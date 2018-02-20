@@ -1,12 +1,17 @@
-<p>Album</p>
-<p>Title: <%= @album.title %></p>
-<p>Artist: <%= @album.artist.name %></p>
-<p>Genre: <%= @album.genre %></p>
-<p>Quantity: <%= @album.quantity %></p>
-<p>Purchase Price: <%= @album.buy_price %></p>
-<p>Sale Price: <%= @album.sale_price %></p>
-<p>Expected Profit: <%= @album.mark_up %></p>
-<p>Stock Level <%= @album.stock_level %></p>
+<div class="album_details"
+
+
+  <p class="album_properties">Album</p>
+  <p class="album_properties">Title: <%= @album.title %></p>
+  <p class="album_properties">Artist: <%= @album.artist.name %></p>
+  <p class="album_properties">Genre: <%= @album.genre %></p>
+  <p class="album_properties">Quantity: <%= @album.quantity %></p>
+  <p class="album_properties">Purchase Price: <%= @album.buy_price %></p>
+  <p class="album_properties">Sale Price: <%= @album.sale_price %></p>
+  <p class="album_properties">Expected Profit: <%= @album.mark_up %></p>
+  <p class="album_properties">Stock Level <%= @album.stock_level %></p>
+
+</div>
 
 
 <p><a href="<%= @album.id %>/edit">Edit This Album?</a></p>
