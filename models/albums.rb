@@ -1,5 +1,4 @@
 require_relative("../db/sql_runner.rb")
-require_relative("../models/stock.rb")
 
 class Album
 
@@ -62,8 +61,8 @@ class Album
   end
 
   def update
-    sql = "UPDATE albums SET (title, genre, quantity, artist_id) = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
-    values = [@title, @genre, @quantity, @artist_id, @id, @buy_price, @sale_price]
+    sql = "UPDATE albums SET (title, genre, quantity, artist_id, buy_price, sale_price) = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
+    values = [@title, @genre, @quantity, @artist_id, @buy_price, @sale_price, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -76,26 +75,12 @@ class Album
 
   end
 
-  # def stock_level
-  #   sql = "SELECT * FROM stock WHERE id = $1"
-  #   values = [1]
-  #   result = SqlRunner.run(sql)
-  #   settings = Stock.new(result[0])
-  #   if @quantity <= settings.low
-  #     return "Low"
-  #   elsif @quantity <= settings.medium
-  #     return "Medium"
-  #   elsif @quantity >= settings.high
-  #     return "High"
-  #   end
-  # end
-
   def stock_level
-      if @quantity <= 1
+      if @quantity <= 2
         return "Low"
-      elsif @quantity <= 2
+      elsif @quantity <= 5
         return "Medium"
-      elsif @quantity >= 3
+      elsif @quantity >= 10
         return "High"
       end
   end

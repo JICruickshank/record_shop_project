@@ -6,18 +6,15 @@ get "/add_album" do
 end
 
 post "/add_album" do
-  name = params[:artist_name]
-  if Artist.find_id_by_name(name) == false
-    new_artist = Hash.new
-    new_artist['name'] = name
-    @artist = Artist.new(new_artist)
+  if Artist.find_id_by_name(params[:name]) == false
+    @artist = Artist.new(params)
     @artist.save
     params[:artist_id] = @artist.id
     @album = Album.new(params)
     @album.save
     erb(:"albums/create")
   else
-    params[:artist_id] = Artist.find_id_by_name(name)
+    params[:artist_id] = Artist.find_id_by_name(params[:name])
     @album = Album.new(params)
     @album.save
     erb(:"albums/create")

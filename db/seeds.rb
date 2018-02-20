@@ -13,8 +13,7 @@ album1 = Album.new({'title' => 'Walk This Land', 'genre' => 'Drum \'n\' Bass', '
 album2 = Album.new({'title' => 'The Nine', 'genre' => 'Drum \'n\' Bass', 'quantity' => 3, 'artist_id' => artist2.id, 'buy_price' => 20, 'sale_price' => 30})
 album1.save
 album2.save
-# default_settings = Stock.new({'low' => 1, 'medium' => 2, 'high' => 3})
-# default_settings.save
+
 
 binding.pry
 nil

@@ -1,10 +1,9 @@
-li {
-  display: inline;
-  padding: 70px;
-  /* align-content: space-between; */
+.nav_link {
+  display: flex;
+  /* padding: 60px; */
 }
-.top_nav_links {
-  background-color: beige;
-  /* align-content: stretch; */
+.top_links {
+  display: flex;
+  flex-direction: row;
 
 }

@@ -26,20 +26,17 @@ get "/inventory/:id/edit" do
 end
 
 post "/inventory/:id" do
-  artist_name = params[:name]
-  if Artist.find_id_by_name(artist_name) == false
-    artist = Hash.new
-    artist['name'] = artist_name
-    @artist = Artist.new(artist)
+  if Artist.find_id_by_name(params[:name]) == false
+    @artist = Artist.new(params)
     @artist.save
     params[:artist_id] = @artist.id
     @album = Album.new(params)
     @album.update
   else
-    artist_id = Artist.find_id_by_name(artist_name)
+    artist_id = Artist.find_id_by_name(params[:name])
     params[:artist_id] = artist_id
     @album = Album.new(params)
     @album.update
-  erb(:"inventory/update")
   end
+erb(:"inventory/update")
 end

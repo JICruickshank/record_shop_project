@@ -8,14 +8,16 @@
   <title>THE RECORD STORE!</title>
 </head>
 <body>
-  <nav class="top_nav_links">
+  <nav>
+    <div class="top_links">
       <ul>
-        <li><a href ="/">Home</a></li>
-        <li><a href="/inventory">View Full Inventory</a></li>
-        <li><a href="/artists">View Artists</a></li>
-        <li><a href="/add_artist">Add an Artist</a></li>
-        <li><a href="/add_album">Add an Album</a></li>
+        <li class="nav_link"><a href ="/">Home</a></li>
+        <li class="nav_link"><a href="/inventory">View Full Inventory</a></li>
+        <li class="nav_link"><a href="/artists">View Artists</a></li>
+        <li class="nav_link"><a href="/add_artist">Add an Artist</a></li>
+        <li class="nav_link"><a href="/add_album">Add an Album</a></li>
       </ul>
+    </div>
   </nav>
 
   <%= yield %>

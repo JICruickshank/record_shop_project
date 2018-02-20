@@ -44,17 +44,6 @@ class Artist
 
   end
 
-  def self.artist_already_exists(name)
-    artists = self.all
-    artists.each do |artist|
-      if artist.name == name
-        return artist.id
-      else
-        return false
-      end
-    end
-  end
-
   def delete
     sql = "DELETE FROM artists WHERE id = $1"
     values = [@id]
