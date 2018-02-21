@@ -47,6 +47,26 @@ class Album
     end
   end
 
+  def self.albums_by_genre(genre)
+    sql = "SELECT * FROM albums WHERE genre = $1"
+    values = [genre]
+    result = SqlRunner.run(sql, values)
+    albums = result.map { |album| Album.new(album)}
+  end
+
+  def self.sales_by_genre(genre)
+    sales = []
+    albums = self.albums_by_genre(genre)
+    albums.each do |album|
+      album_sales = album.sales
+      album.sales.each do |sale|
+        sales.push(sale)
+      end
+    end
+    sales.sort_by! { |sale| sale.sale_date }
+    return sales
+  end
+
   def delete
     sql = "DELETE FROM albums WHERE id = $1"
     values = [@id]
@@ -117,5 +137,9 @@ class Album
     return @albums
 
   end
+
+
+
+
 
 end

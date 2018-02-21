@@ -1,16 +1,16 @@
-<h2>SALES BY <%= @artist.name.upcase %></h2>
+<h2>SALES FOR <%= @genre %></h2>
 <table>
   <tr>
     <th>Album</th>
-    <th>Genre</th>
+    <th>Artist</th>
     <th>Sale Price</th>
     <th>Quantity</th>
     <th>Date</th>
   </tr>
   <tr>
     <%  @sales.each do |sale| %>
-    <td><a href="/inventory/<%= sale.album.id %>"><%= sale.album.title %></td>
-    <td><a href="/sales/<%= sale.genre %>"><%= sale.genre %></a></td>
+    <td><a href="/inventory/<%= sale.album.id %>"><%= sale.album.title %></a></td>
+    <td><a href="/artists/<%= sale.artist.id %>/sales"><%= sale.artist.name %></a></td>
     <td><%= sale.album.sale_price %></td>
     <td><%= sale.sale_quantity %></td>
     <td><%= sale.sale_date %></td>

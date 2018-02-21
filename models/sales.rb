@@ -46,5 +46,12 @@ class Sale
 
   end
 
+  def genre
+    sql = "SELECT * FROM albums WHERE genre = $1"
+    values = [album.genre]
+    result = SqlRunner.run(sql, values)[0]
+    album = Album.new(result)
+    genre = album.genre
+  end
 
 end

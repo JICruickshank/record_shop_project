@@ -60,3 +60,10 @@ get "/sales" do
   erb(:"sales/index")
 
 end
+
+get "/sales/:id" do
+  @sales = Album.sales_by_genre(params[:id])
+  @genre = params[:id]
+  erb(:"sales/genre")
+
+end

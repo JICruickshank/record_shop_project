@@ -3,13 +3,17 @@
   <tr>
     <th>Artist</th>
     <th>Album</th>
+    <th>Genre</th>
+    <th>Sale Price</th>
     <th>Quantity</th>
     <th>Date</th>
   </tr>
   <tr>
     <%  @sales.each do |sale| %>
     <td><a href="/artists/<%= sale.artist.id %>/sales"><%= sale.artist.name %></a></td>
-    <td><%= sale.album.title %></td>
+    <td><a href="/inventory/<%= sale.album.id %>"><%= sale.album.title %></td>
+    <td><a href="/sales/<%= sale.genre %>"><%= sale.genre %></a></td>
+    <td><%= sale.album.sale_price %></td>
     <td><%= sale.sale_quantity %></td>
     <td><%= sale.sale_date %></td>
   </tr>

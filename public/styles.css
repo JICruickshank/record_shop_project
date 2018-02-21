@@ -35,6 +35,7 @@ tr {
 }
 td {
   width: 200px;
+  height: 50px;
   text-align: center;
   border: solid black 1px;
 }
@@ -65,4 +66,5 @@ h2 {
 }
 .change_button {
   background: gainsboro;
+
 }
