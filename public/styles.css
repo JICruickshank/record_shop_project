@@ -2,13 +2,14 @@
   display: inline;
   background: beige;
   border: black 3px solid;
-  padding: 0px 52px;
+  padding: 5px 52px;
   opacity: 0.9;
 }
 body {
   background-image: url("smiley.jpg");
   background-position: top;
   background-repeat: no-repeat;
+  font-family: Arial;
 
 }
 .bg {
@@ -39,4 +40,29 @@ td {
 }
 .artist_list {
   font-size: 22px;
+}
+.link_outside_table {
+  text-decoration: none;
+}
+
+.link_button {
+  width: 200px;
+  background: gainsboro;
+  padding: 10px 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 14px;
+  color: blue;
+}
+.button {
+  background: gainsboro;
+  border: none;
+  color: blue;
+  font-size: 14px;
+}
+h2 {
+  margin-left: 40px;
+}
+.change_button {
+  background: gainsboro;
 }

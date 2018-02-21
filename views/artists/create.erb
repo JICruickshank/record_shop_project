@@ -1,7 +1,7 @@
 <% if @new_artist == true %>
 <p>Artist Name : <%= @artist.name %></p>
 <p>This artist is saved</p>
-<p><a class="w3-btn w3-black" href="<%=@artist.id %>/add_album">Add album for this artist?</p>
+<p><button class="link_button"><a class="link_outside_table" href="<%=@artist.id %>/add_album">ADD ALBUM FOR THIS ARTIST?</p>
 <% elsif @new_artist == false %>
 <p>This artist has already been added</p>
 <% end %>

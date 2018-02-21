@@ -1,13 +1,33 @@
 <h2>Inventory For <%= @artist.name %> </h2>
+<table>
+<tr>
+  <th>Title</th>
+  <th>Genre</th>
+  <th>Quantity</th>
+  <th>Sale Price</th>
+  <th>Expected Profit</th>
+  <th>Stock Level</th>
+</tr>
+<tr>
  <% @albums.each do |album| %>
-<p>Title: <a href="/inventory/<%= album.id %>"><%= album.title %></a></p>
-<p>Genre: <%= album.genre %></p>
-<p>Quantity: <%= album.quantity %></p>
-<p>Stock Level: <%= album.stock_level %></p>
+   <td><a href="/inventory/<%= album.id %>"><%= album.title %></a></td>
+   <td><%= album.genre %></td>
+   <td><%= album.quantity %></td>
+   <td><%= album.sale_price %></td>
+   <td><%= album.mark_up %></td>
+   <td><%= album.stock_level %></td>
+ </tr>
 <% end %>
-<a href="<%= @artist.id %>/add_album">Add Album to this artist?</a>
-<a href="<%= @artist.id %>/edit_artist_name">Edit Artist name?</a>
+</table>
+
+<br>
+<button class="link_button" type="button" name="button"><a class="link_outside_table" href="<%= @artist.id %>/add_album">Add Album to this artist?</a></button>
+<br>
+<br>
+<button class="link_button" type="button" name="button"><a class="link_outside_table" href="<%= @artist.id %>/edit_artist_name">Edit Artist name?</a></button>
+<br>
+<br>
 <form action="<%= @artist.id %>/delete" method="post">
-  <input type="submit" value="Delete Artist?">
+  <button class="link_button" type="button" name="button"><input class="button" type="submit" value="Delete Artist?"></button>
 </form>
 <p>** DELETING ARTIST WILL ALSO DELETE ALBUMS BY THAT ARTIST **</p>
