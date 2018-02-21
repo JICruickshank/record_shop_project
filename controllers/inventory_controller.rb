@@ -3,7 +3,7 @@ require_relative("../models/artists.rb")
 require_relative("../models/sales.rb")
 
 get "/inventory" do
-  @albums = Album.all
+  @albums = Album.sort
   erb(:"inventory/index")
 end
 

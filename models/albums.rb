@@ -25,7 +25,7 @@ class Album
   def self.all
     sql = "SELECT * FROM albums"
     result = SqlRunner.run(sql)
-    artists = result.map { |album| Album.new(album) }
+    albums = result.map { |album| Album.new(album) }
   end
 
   def self.find_by_id(id)
@@ -108,6 +108,13 @@ class Album
     values = [@id]
     result = SqlRunner.run(sql, values)
     sales = result.map { |sale| Sale.new(sale) }
+
+  end
+
+  def self.sort
+    @albums = self.all
+    @albums.sort_by! { |album| album.artist.name }
+    return @albums
 
   end
 
